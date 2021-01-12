@@ -1,17 +1,15 @@
-# [BOJ] 10951 A+B -4
+# [BOJ] 05567 결혼식
 
 ### 문제 바로가기
 
->  https://www.acmicpc.net/problem/10951
+>  https://www.acmicpc.net/problem/5567
 
 ### 알고리즘
 
-> 사칙연산. 구현 . 수학
+> BFS. 그래프이론 . 그래프탐색. 구현
 
 ### 문제 풀이 및 주의
 
-> EOF 주의 
+> 1차 4ms 
 >
-> if(cin.eof()==true) 
->
-> cin으로 입력받은 값이 없으면 cin.eof()는 true 반환 
+> 2차 1ms 
