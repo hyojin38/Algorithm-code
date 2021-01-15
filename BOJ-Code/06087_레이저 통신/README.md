@@ -28,7 +28,7 @@
 >
 > queue<pair<pair<int,int>,pair<int,int>>> Q
 >
-> Q(make_pair(make_pair(x,y),make_pair(i,j)));
+> Q.push(make_pair(make_pair(x,y),make_pair(i,j)));
 >
 > **[초기화]**
 >
