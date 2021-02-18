@@ -1,134 +1,116 @@
-//swea 1251 하나로
-//20210218
-//계산 값이 미세하게 틀림
-#include<iostream>
-#include<vector>
-#include<algorithm>
-#include<math.h>
-#include <cstring>  //memset 주의
-typedef long long  ll;  // typedef longlong ll 암기~
-#define MAX 1001
+#include <iostream>
+#include <vector>
+#include <cstring>
+#include <algorithm>
+#include <cmath>//올림
+#define MAX 1000+1
 #define endl "\n"
-
+typedef long long LL;
 using namespace std;
 
-
-ll TC,N,X,Y, Ans;
-double T;
-ll island[MAX][2];
-vector<pair< ll, pair<ll, ll > > > V; //최소 환경 부담금 정수형태 반올림
-ll check[MAX];
-ll P[MAX];
-
-void dfs(ll cnt, ll idx) {
-	if (cnt == 2) {
-		ll x1, y1, x2, y2;
-		ll p1, p2;
-		cnt = 0;
-		for (ll i = 0; i < N; i++) {
-			if (check[i] == true) {
-				if (cnt == 0) {
-					x1 = island[i][0];
-					y1 = island[i][1];
-					p1 = i;
-					cnt++;
-				}
-				else {
-					x2 = island[i][0];
-					y2 = island[i][1];
-					p2 = i;
-					break;
-				}
-			}
-		}
-		//거리공식 (유클리드 맨하탄 해밍)
-		ll L, P;
-		ll dx= abs(x1-x2);
-		ll dy = abs(y1-y2);
-		L = sqrt(dx*dx + dy * dy);
-		P = T * L * L;
-		V.push_back(make_pair(P, make_pair(p1, p2)));
-		
-		return;
+LL N, X, Y, TC,Ans;
+double E;
+LL Island[MAX][2];
+LL Parent[MAX];
+vector <pair <LL, pair<LL, LL> > > V;
+void Init(){
+	for (int i = 0; i < N; i++) {
+		Island[i][0] = 0;
+		Island[i][0] = 0;
 	}
+	V.clear();
+	Ans = 0;
+	E = 0.0;
+}
+LL calc_dis(int i, int j) {
+	LL dx = Island[i][0] - Island[j][0];
+	LL dy = Island[i][1] - Island[j][1];
+	//cout << (dx *dx + dy *dy); 와 dx^2의 차이??
+	return (dx *dx + dy * dy); //해저터널의 제곱
 
-	for (ll i = idx; i < N; i++) {
-		if (check[i] == true) continue;
-		check[i] = true;//0
-		dfs(cnt + 1, i+1);
-		check[i] = false;
-	}
 }
 void Input() {
 	cin >> N;
-	for (ll i = 0; i < N; i++) { //x
+	for (int i = 0; i < N; i++) {//x입력
 		cin >> X;
-		island[i][0]=X;
+		Island[i][0] = X;
 	}
-	for (ll i = 0; i < N; i++) { //x
+	for (int i = 0; i < N; i++) {//x입력
 		cin >> Y;
-		island[i][1] = Y;
+		Island[i][1] = Y;
 	}
-	cin >> T;
-	//조합 터널
-	dfs(0,0); // N개 중 2개 뽑기 V완성
-
+	cin >> E;
+	//double P;
+	for (int i = 0; i < N; i++) {
+		for (int j = i+1; j < N; j++) {
+			LL D;
+			D=calc_dis(i, j);
+			V.push_back(make_pair(D, make_pair(i, j)));
+		}
+	}
 
 }
-void MakeSet(int x) {
-	P[x] = x;
+
+void Makeset(int x) {
+	Parent[x] = x;
 }
-int FindSet(int x) {
-	if (P[x] == x) return x;
-	else return P[x] = FindSet(P[x]);
+int Findset(int x) {
+	if (Parent[x]== x) return x;
+	else return Parent[x] = Findset(Parent[x]); // Parent[x] = Findset(x); 아님!!!
 }
 void Union(int x, int y) {
-	x = FindSet(x);
-	y = FindSet(y);
+	x = Findset(x);
+	y= Findset(y);
 	if (x != y) {
-		P[y] = x;
+		Parent[y] = x;
 	}
 }
-bool checkP(int x, int y) {
-	x = FindSet(x);
-	y = FindSet(y);
+bool SameParent(int x, int y) {
+	x = Findset(x);
+	y = Findset(y);
 	if (x == y) return true;
 	else return false;
 }
 void Solution() {
-
 	sort(V.begin(), V.end());
-	for(int i=0;i<N;i++)
-		MakeSet(i);
-	for (int i = 0; i < V.size(); i++) {
-		ll x = V[i].second.first;
-		ll y = V[i].second.second;
 
-		if (!checkP(x, y)) {
+	for (int i = 0; i < N; i++)
+		Makeset(i);
+
+	for (int i = 0; i < V.size(); i++) {
+		LL x = V[i].second.first;
+		LL y = V[i].second.second;
+
+		if (SameParent(x, y)==false) {
 			Union(x, y);
+		
 			Ans += V[i].first;
 		}
-	
-	}
 
-}
-void Init() {
-	Ans = 0;;
-	V.clear();
-	memset(check, false, sizeof(check));
+	}
+	
+
+
+
 }
 int main() {
-
 	ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 	freopen("Text.txt", "r", stdin);
+
+	cout << fixed; //소수점을 고정시켜 표현하겠다
+	cout.precision(0); //0자리까지 표현하겠다
+
 	cin >> TC;
-	
 	for (int tc = 1; tc <= TC; tc++) {
 		Init();
 		Input();
 		Solution();
-		cout << "#" << tc << " " << (ll)Ans<<endl;
+		cout << "#" << tc << " " <<Ans*E << endl; //중간에 LL 에 double 넣고 더하기만 하면 다 반올림 하면서 세부 숫자 작아져
+		// 통일하여 (LL) *double
+		// 모두다 double +double +double 으로 하던지 
 	}
-	
+
+
+
 	return 0;
 }
