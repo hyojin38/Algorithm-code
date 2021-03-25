@@ -13,22 +13,47 @@
 > 다시 풀기 [풀이 참고]
 
 >```C++
->#include<cstdio>
+>#include<iostream>
+>#include<vector>
 >#include<algorithm>
->using namespace std;
->char s1[1002], s2[1002];
->int dp[1001][1001], i, j;
->int main() {
->    scanf("%s %s", s1 + 1, s2 + 1);
->    for (i = 1; s1[i]; i++)
->        for (j = 1; s2[j]; j++)
->            dp[i][j] = max({ dp[i][j - 1], dp[i - 1][j],
->                             dp[i - 1][j - 1] + (s1[i] == s2[j]) 
->                           });
->    printf("%d", dp[i - 1][j - 1]);
->    return 0;
->}
+>#include<string>
+>#include<cstring>
+>#define MAX 1000+2
 >
+>using namespace std;
+>
+>string s1, s2;
+>int N, M;
+>char S1[MAX], S2[MAX];
+>int dp[MAX][MAX];
+>
+>void Solution() {
+>	cin >> s1 >> s2;
+>	N=s1.size();
+>	M= s2.size();
+>
+>	for (int i = 1; i <= N; i++) {
+>		S1[i] = s1[i-1];
+>	}
+>	for (int i = 1; i <= M; i++) {
+>		S2[i] = s2[i-1];
+>	}
+>	for (int i = 1; i <= N; i++) {
+>		for (int j = 1; j <= M; j++) {
+>			dp[i][j] = max({ dp[i][j - 1],dp[i - 1][j] ,
+>							 dp[i - 1][j - 1] + (S1[i] == S2[j]) });
+>        }
+>	}
+>	cout << dp[N][M];
+>}
+>int main() {
+>	ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+>	freopen("Text.txt", "r", stdin);
+>
+>	Solution();
+>
+>	return 0;
+>}
 >```
 
 
