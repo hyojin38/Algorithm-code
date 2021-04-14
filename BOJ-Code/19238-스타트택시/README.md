@@ -1,8 +1,8 @@
-# [BOJ] 20055 컨베이어 벨트 위의 로봇
+# [BOJ] 19238 스타트택시
 
 ### 문제 바로가기
 
->  https://www.acmicpc.net/problem/20055
+>  https://www.acmicpc.net/problem/19238
 
 ### 알고리즘
 
