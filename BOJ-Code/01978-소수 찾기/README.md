@@ -52,7 +52,7 @@
 >
 > ```c++
 >   bool isPrime(int num){
->         for(int i=2; i*i<=num; i++){
+>         for(int i=2; i*i<=num; i++){//제곱근 활용
 >             if(num % i == 0) return false;
 >         }
 >         return true;
