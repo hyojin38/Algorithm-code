@@ -21,9 +21,21 @@
 > cout<<isdigit(str[0])<<endl;//0 flase
 > ```
 
->[]
+>#### int -> string [ to_string() 함수]
 >
+>```
+>#include <string>
 >
+>int x=123;
+>double d=12.345;
+>
+>string str1= to_string(x);
+>string str2= to_string(d);//12.345000 소수점 6자리까지 포함된다
+>```
+>
+>int 타입의 경우 동일하게 변경되지만 double은 소수점 6자리까지 포함된다.
+>
+>해당 특성을 파악하고 float, double, long double 등을 변환할 때는 주의해서 사용.
 
 ## 2. Vector
 
