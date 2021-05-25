@@ -1,12 +1,8 @@
-
-
-
-
-# [BOJ] 1405 미친 로봇
+# [BOJ] 14620 꽃길
 
 ### 문제 바로가기
 
->  https://www.acmicpc.net/problem/1405
+>  https://www.acmicpc.net/problem/14620
 
 ### 알고리즘
 
