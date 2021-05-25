@@ -24,6 +24,8 @@
 
 **문제**
 
+[BOJ(1707)](https://github.com/hyojin38/Algorithm-code/tree/main/BOJ-Code/01707-%EC%9D%B4%EB%B6%84%20%EA%B7%B8%EB%9E%98%ED%94%84)
+
 
 
 
