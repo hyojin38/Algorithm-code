@@ -37,6 +37,15 @@
 >
 >해당 특성을 파악하고 float, double, long double 등을 변환할 때는 주의해서 사용.
 
+> #### string to int [stoi함수. stoll함수]
+>
+> ```c++
+> #include <string>
+> int stoi(const string& str [,size_t* idx=0, int base=10] )
+> //3번째 인수 디폴트값 10
+> //이를 변경해주면 n진수의 문자열을 10진수의 수로 변경할 수 있다
+> ```
+
 ## 2. Vector
 
 #####    vector 특정 원소 지우기
