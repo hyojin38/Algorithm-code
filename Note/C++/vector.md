@@ -1,6 +1,11 @@
 ## Vector
 
-#####    vector 특정 원소 지우기
+#include <vector>
+
+- 길이 변경 할 수 있는 배열
+- array처럼 배열의 길이가 바뀔 때 마다 바뀌는 메모리 신경 쓰지 않아도 된다
+
+## 1. erase : vector 특정 원소 지우기
 
 
 >#### - erase(int position)
@@ -30,4 +35,16 @@
 >  for(int it : v) cout << it << " "; // 1 4 5
 >```
 >
+
+
+
+## 2. iterator
+
+> v.begin(), v.end() 입력시 iterator 반환 됨
 >
+> ```c++
+> for(vector<int>::iterator it=v.begin; it != 	v.end(); it++){
+> 	cout<<*it<<" ";
+> }
+> ```
+
