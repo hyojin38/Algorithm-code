@@ -1,124 +1,103 @@
-# c++ 개념 정리
+# c++ STL 
 
-## 1. string
+## 1. STL: Standard Template Library
 
-> ### [isdigit 함수]
->
-> ##### - int isdigit(int c);	
->
-> 매개변수로 들어온 char 타입이 10진수로 변경가능하면 1(true) 아니면0(false)반환
->
-> 함수 원형을 살펴보면 매개변수 타입이 char이 아닌 int 타입인것을 확인 할 수 있다.
->
-> 이것은 char 타입이 아스키 코드 번호로 들어갈 수 있기 때문이다.
->
-> 즉 아스키 코드표에서 48~57에 해당하는 문자 '0'~'9'가 들어오면 true를 반환하는 형태이다 
->
-> ```c++
-> #include <cctype>
-> 
-> string str="B123456789";
-> cout<<isdigit(str[0])<<endl;//0 flase
-> ```
+c++ 에서 제공하는 표준 라이브러리로 자료구조 알고리즘 등을 편하게 사용하도록 해줌
 
->#### int -> string [ to_string() 함수]
->
->```
->#include <string>
->
->int x=123;
->double d=12.345;
->
->string str1= to_string(x);
->string str2= to_string(d);//12.345000 소수점 6자리까지 포함된다
->```
->
->int 타입의 경우 동일하게 변경되지만 double은 소수점 6자리까지 포함된다.
->
->해당 특성을 파악하고 float, double, long double 등을 변환할 때는 주의해서 사용.
+- 임의 타입의 객체를 보관할 수 있는 컨테이너(container)
 
-> #### string to int [stoi함수. stoll함수]
->
-> ```c++
-> #include <string>
-> int stoi(const string& str [,size_t* idx=0, int base=10] )
-> //3번째 인수 디폴트값 10
-> //이를 변경해주면 n진수의 문자열을 10진수의 수로 변경할 수 있다
-> ```
+- 컨테이너에 보관된 원소에 접근할 수 있는 반복자 (iterator)
 
-## 2. Vector
+  포인터 같은 역할로 원소 순회시 begin, end를 이용하여 사용
 
-#####    vector 특정 원소 지우기
+- 반복자들을 가지고 일련의 작업을 수항해은 알고리즘(algorithm)
 
+알고리즘, 컨테이너 , 이터레이터, 함수 등으로 이루어져 있다
 
->#### - erase(int position)
->
->```c++
->v.erase(v.begin()+1);// vector v에서 1번째 원소를 지운다
->```
->
->#### - erase(int start, int end)
->
->```c++
->v.erase(v.begin()+1, v.begin+3);// vector v에서 1번째부터 2번째까지의 원소를 지운다
->```
->
->```c++
->vector<int> v(5);
->for(int i = 0 ; i < 5; i++) v[i] = i+1; // 1 2 3 4 5
->
->   1. 
->   v.erase(v.begin() + 1);
->   for(int it : v) cout << it << " "; // 1 3 4 5
->
->   2. 
->   v.erase(v.begin() + 1, v.begin() + 3);
->   for(int it : v) cout << it << " "; // 1 4 5
->```
-
-
-
-## 3.Bitset
-
-```c++
-#include <bitset>
-
-  
-    bitset<10> bit; // bitset을 선언, 총 10개의 비트를 의미한다.
- 
-
-    bit.reset();     // 전체 비트를 0으로 리셋한다.
-    bit.set();    // 전체 비트를 1로 셋팅한다.
-   
-
-    int size = (int)bit.size();    // 비트셋으로 선언한 bit의 할당된 수를 구한다
-   
-    int any= bit.any();    // 비트셋중 하나라도 1이면 1을 반환, 모두 0이면 0을 반환한
-다.// 현재는 1이다.
-	int none=bit.none(); //비트셋 중 모두가 0이어야 1을 반환
-    
-	bit.flip(3);     // 4번째 비트 반전 n+1번째 비트 반전
- 	bit.flip();      // 전체 비트 반전
-
-
-    bit.set(0, true);    // 첫번째 비트는 true, 네번째 비트는 false 할당
-    bit.set(3, false);
- 
-	//cout>>
-    bit.test(0) // n+1번째 비트 검사 (1인지 0인지) // 첫번째 비트 검사
-    bit[4] // 다섯번째 비트 검사(배열형식으로도 가능하다.)
-
-
-    string str = bit.to_string();    // 비트를 string으로 변환
-
-
-    cout << "bit.to_ulong() :: " << bit.to_ulong() << endl;    // 비트를 숫자로 변환 //bit.to_ulong() / bit.to_ullong()
- 
+```
+우리는 템플릿 덕분에 int,string과 평범한 것들 뿐만아니라 우리가 만든 임의의 클래스의 객체들이여도 자유롭게 위 라이브러리의 기능을 사용할 수 있다. c였다면 불가능했을 일이다
 ```
 
-원하는 비트 몇 개를 쓰기 위한 bitset STL이다. 
-
-이때 0이면 채워지지 않은 것, 1이면 채워진 것
 
 
+## 2. Container: 객체(데이터)를 저장하는 자료구조 (보관소)
+
+컨테이너는 자신이 보관하는 원소(element)들의 메모리를 관리하며, 각각의 원소에 접근할 수 있도록 멤버 함수를 제공해준다. 컨테이서 상에서 원소에 접근하는 방법으로 크게 두 가지가 있는데, 하나는 직접 함수를 호출해서 접근하는 것이고, 다른 하나는 반복자(iterator) 을 이용해서 접근하는 것이다. 이에 관해서는 나중에 설명하도록 하겠다.
+
+> STL 컨테이터(STL Container)
+
+특히, STL 컨테이너는 클래스 템플릿(class template) 의 형태로 구현되어 있기 때문에 임의의 타입의 원소들을 위한 컨테이너를 만들 수 있다. **물론 한 컨테이너에는 한 가지 종류의 객체들만 보관할 수 있다**
+
+표준 라이브러리에서는 , 여러가지 형태의 컨테이너 제공 ( 동적배열[vector], queue, stack, heap[priority_queue], list, tree[set], 연관컨테이너[map] 등)
+
+
+
+> ## 1) Sequence Container 순차 컨테이너
+>
+> - 자료를 순차적으로 저장
+> - 자료가 적은 경우 유리한 구조
+> - vector, list, deque(double ended queue) (arrays, forward-list (?))
+
+> ## 2) Associative Container 연관 컨테이너
+>
+> - 빠르게 검색 할 수 있는 노드기반 이진트리구조
+> - set, map, multiset(여러키를 가지는 set), multimap(여러 키를 가지는 map)
+> - <u>Associative Container에 bitset이 들어가나???(?)</u>
+
+> ## 3) unordered Associative Container 순서가 없는 연관 컨테이너
+>
+> - unordered_set, unordered_map,unordered_multiset, numordered_multimap
+
+>## 4) Container adaptor 컨테이너 어댑터
+>
+>- 다른 컨테이너 클래스들을 상속받아서 다른 컨테이너 클래스의 객체에 특정한 인터페이스를 제공
+>
+>- 기존 컨테이너의 인터페이스 중 일부만 제공하는 컨테이너 
+>
+>  stack 이 deque 에 작용한다면, deque에 stack 이 제공하는 top, pop, push 등의 인터페이스를 사용할 수 있게 되는 것이다.
+>
+>- stack, queue, priority_queue
+
+
+
+## 3. < algorithm >
+
+
+
+## 4.  STL 정리
+
+### 0) pair 
+
+	- 두 자료형을 하나의 쌍(pair)로 묶는다. 첫번째는 first, 두번째는 second로 접근가능
+	- vector, algorithm의 헤더파일에 include 하고 있어서 별토의 utility 헤더를 물릴 필요가 없다
+
+
+
+### 1-1) Vector
+
+- 길이 변경 할 수 있는 배열
+
+
+
+### 1-2) list
+
+
+
+### 1-3) deque
+
+
+
+### 2-1) set, map, multiset(여러키를 가지는 set), multimap
+
+
+
+### 3-1)stack, queue, priority_queue
+
+
+
+## 5. < string >
+
+
+
+## 6. < bitset >
 
