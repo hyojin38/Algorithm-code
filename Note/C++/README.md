@@ -62,18 +62,18 @@ c++ 에서 제공하는 표준 라이브러리로 자료구조 알고리즘 등�
 
 ## 3. < algorithm >
 
-
+[algorithm](https://github.com/hyojin38/Algorithm-code/blob/main/Note/C%2B%2B/algorithm.md)
 
 ## 4.  STL 정리
 
 ### 0) pair 
 
-	- 두 자료형을 하나의 쌍(pair)로 묶는다. 첫번째는 first, 두번째는 second로 접근가능
-	- vector, algorithm의 헤더파일에 include 하고 있어서 별토의 utility 헤더를 물릴 필요가 없다
+- 두 자료형을 하나의 쌍(pair)로 묶는다. 첫번째는 first, 두번째는 second로 접근가능
+- vector, algorithm의 헤더파일에 include 하고 있어서 별토의 utility 헤더를 물릴 필요가 없다
 
 
 
-### 1-1) Vector
+### 1-1) Vector [📃](https://github.com/hyojin38/Algorithm-code/blob/main/Note/C%2B%2B/vector.md)
 
 - 길이 변경 할 수 있는 배열
 
@@ -95,9 +95,9 @@ c++ 에서 제공하는 표준 라이브러리로 자료구조 알고리즘 등�
 
 
 
-## 5. < string >
+## 5. < string >[📃](https://github.com/hyojin38/Algorithm-code/blob/main/Note/C%2B%2B/string.md)
 
 
 
-## 6. < bitset >
+## 6. < bitset >[📃](https://github.com/hyojin38/Algorithm-code/blob/main/Note/C%2B%2B/bitset.md)
 
