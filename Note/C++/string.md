@@ -1,7 +1,38 @@
 # < string > 
 
-> ### [isdigit 함수]
->
+## 1. find() 
+
+문자열에서 원하는 문자열의 위치 찾음
+
+리턴값: 원하는 문자열의 위치(0번 부터 시작)
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    string a="hi hello hyojin";
+
+    if(a.find("e")>=0){
+        cout<<a.find("e")<<endl; //4
+    }
+    if(a.find("hello")>=0){
+        cout<<a.find("hello")<<endl; //3
+    }
+    
+    if (a.find("sub") == string::npos) { 
+        cout << a.find("sub") << endl;
+        //찾는 문자열이 없는 경우 string::npos를 반환한다
+    }
+    return 0;
+}
+```
+
+
+
+## 2. isdigit()
+
 > ##### - int isdigit(int c);	
 >
 > 매개변수로 들어온 char 타입이 10진수로 변경가능하면 1(true) 아니면0(false)반환
@@ -13,13 +44,16 @@
 > 즉 아스키 코드표에서 48~57에 해당하는 문자 '0'~'9'가 들어오면 true를 반환하는 형태이다 
 >
 > ```c++
-> #include <cctype>
+>#include <cctype>
 > 
 > string str="B123456789";
 > cout<<isdigit(str[0])<<endl;//0 flase
 > ```
->
 > 
+
+
+
+## 3. to_string()
 
 >#### int -> string [ to_string() 함수]
 >
@@ -37,6 +71,10 @@
 >
 >해당 특성을 파악하고 float, double, long double 등을 변환할 때는 주의해서 사용.
 
+
+
+## 4.stoi(), stoll()
+
 > #### string to int [stoi함수. stoll함수]
 >
 > ```c++
@@ -46,4 +84,3 @@
 > //이를 변경해주면 n진수의 문자열을 10진수의 수로 변경할 수 있다
 > ```
 >
-> 
