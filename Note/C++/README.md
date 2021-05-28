@@ -66,32 +66,34 @@ c++ 에서 제공하는 표준 라이브러리로 자료구조 알고리즘 등�
 
 ## 4.  STL 정리
 
-### 0) pair 
+####  0) pair 
 
 - 두 자료형을 하나의 쌍(pair)로 묶는다. 첫번째는 first, 두번째는 second로 접근가능
 - vector, algorithm의 헤더파일에 include 하고 있어서 별토의 utility 헤더를 물릴 필요가 없다
 
 
 
-### 1-1) Vector [📃](https://github.com/hyojin38/Algorithm-code/blob/main/Note/C%2B%2B/vector.md)
+####  1-1) Vector [📃](https://github.com/hyojin38/Algorithm-code/blob/main/Note/C%2B%2B/vector.md)
 
 - 길이 변경 할 수 있는 배열
 
 
 
-### 1-2) list
+####  1-2) list
 
 
 
-### 1-3) deque
+####  1-3) deque
 
 
 
-### 2-1) set, map, multiset(여러키를 가지는 set), multimap
+####  2-1) set
+####  2-2) map [📃]()
+####  2-1) multiset(여러키를 가지는 set), multimap
 
 
 
-### 3-1)stack, queue, priority_queue
+#### 3-1)stack, queue, priority_queue
 
 
 
