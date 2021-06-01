@@ -1,48 +1,55 @@
+//가장 긴 증가하는 부분수열 
+//방법1. DP 사용
 #include <iostream>
 #include <vector>
+#include <cmath>
 #define MAX 1000+1
-
 using namespace std;
 
-int A;
-vector <int> V;
+int A,Ans=0;
+vector <int > V;
 int DP[MAX];
-int Ans;
 void Input() {
 	cin >> A;
+	int temp;
 	for (int i = 0; i < A; i++) {
-		int temp;
 		cin >> temp;
 		V.push_back(temp);
-		DP[i] = 1;
 	}
-
+	
 }
 int max(int a, int b) {
-	if (a > b) return a;
+	if (a > b)return a;
 	else return b;
-}void Solution() {
-	for (int i = 1; i < A; i++) {
-		for (int j = i - 1; j >= 0; j--) {
-			if (V[i] < V[j]) {
+}
+void Solution1() {
+	//DP를 활용한 풀이
+	for (int i = 0; i < A; i++) {
+		DP[i] = 1;
+	}
+	for (int i = 0; i < A; i++) {
+		for (int j = 0; j < i; j++) {
+			if (V[j] < V[i]) {
 				DP[i] = max(DP[i], DP[j] + 1);
 			}
 		}
-	}
-
-	for (int i = 0; i < A; i++) {
-		//cout << DP[i]<<" ";
 		if (DP[i] > Ans) Ans = DP[i];
 	}
 
+	/*for (int i = 0; i < A; i++) {
+		cout << DP[i];
+	}*/
+	cout << Ans;
 }
+
 int main() {
 
 	ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 	freopen("Text.txt", "r", stdin);
 
 	Input();
-	Solution();
-	cout << Ans;
+	Solution1();
+	//Solution2();
+
 	return 0;
 }
