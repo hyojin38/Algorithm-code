@@ -48,4 +48,5 @@
 >
 > 이 방법은 모래성이 아닌. 모래를 기준으로 접근
 >
-> 
+> ![<10711모래성3>](https://github.com/hyojin38/Algorithm-code/blob/main/BOJ-Code/10711-모래성/10711.jpg)
+
