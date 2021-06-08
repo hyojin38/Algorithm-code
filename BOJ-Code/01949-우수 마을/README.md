@@ -59,5 +59,12 @@
 > **Tree**
 >
 > tree 이기 때문에 어디서 시작하든 그 노드가 root가 된다
+
+
+
+>**MAX define**
 >
-> 
+>```c++
+>#define MAXF(a,b) (a)>(b) ? (a):(b)
+>```
+
