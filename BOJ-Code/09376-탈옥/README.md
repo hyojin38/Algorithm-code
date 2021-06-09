@@ -6,7 +6,10 @@
 
 ### 알고리즘
 
-> 
+> - [그래프 이론](https://www.acmicpc.net/problem/tag/7)
+> - [그래프 탐색](https://www.acmicpc.net/problem/tag/11)
+> - [너비 우선 탐색](https://www.acmicpc.net/problem/tag/126)
+> - [다익스트라](https://www.acmicpc.net/problem/tag/22)
 
 ### 문제 풀이 및 주의
 
