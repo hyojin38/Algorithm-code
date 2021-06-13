@@ -26,3 +26,4 @@
 >sort(V.begin(),V.end(),compare);
 >```
 
+>오류 발견하지 못함 다시 풀기
