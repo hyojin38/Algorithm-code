@@ -2,7 +2,7 @@
 
 ### 문제 바로가기
 
->  https://programmers.co.kr/learn/courses/30/lessons/12940
+>  https://programmers.co.kr/learn/courses/30/lessons/12940\|
 
 ### 문제 풀이 및 주의
 
