@@ -34,3 +34,22 @@ using namespace stdext;
 
    \- vector : 삽입, 삭제, 탐색 O(n), 임의 원소 접근 O(1) 보장
 
+
+
+## 2.map
+
+```c++
+# include <map>
+
+map < string, int > map1;
+
+int main(){
+	map1.insert({"수학",100});
+	
+	if(map1.count("국어")==0){
+		map1.insert({"국어",80});
+	}
+
+}
+```
+
