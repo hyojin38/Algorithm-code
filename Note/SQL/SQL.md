@@ -47,6 +47,16 @@ select * from account where branch_name like 'SW%';
 
 
 
+\c + 엔터 : 명령어 입력 도중 취소하고 prompt로 탈출
+
+\z + 엔터 : 현재 실행중인 SQL program (command 창) 종료
+
+테이블의 스키마를 알고싶을때 : explain tablename; 
+
+​													   describe tablename;
+
+ 
+
 
 
 ## 1.SELECT문
