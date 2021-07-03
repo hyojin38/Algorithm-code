@@ -8,10 +8,34 @@
 
 ## 4. Heap
 
-### STL (priority_queue)
+### prioirty_queue
+
+- 우선순위 큐를 구현한 stl
+- prioirty_queue container은 vector, deque container 와 붙어서 사용 가능
+- 내부적으로는 algorithm 에 있는 힙 관련 함수들을 사용하여 구현 되어있다
+- 내부 구조 default는 vector container 기반이다
+- 정렬기준 default는 내림차순(less) 기반이다
 
 ```c++
-//	priority_queue< 자료형, 구현체 ,비교연산자>
+#include <queue>
+
+using namespace std;
+
+//템플릿 선언 부분
+//template < typename T,
+//                typename Container = vector<T>,
+//                typename Compare = less<typename Container::velue_type> >
+//class priority_queue;
+
+//	priority_queue< 자료형, 구현체 ,비교연산자 > 명
+
+prioirty_queue < int > PQ1; //기본 생성자
+prioirty_queue < int , deque<int> > PQ2; // 내부 컨테이너 변경
+prioirty_queue < int , vector <int>, greater <int> PQ2; //정렬 기준 변경
+
+```
+
+```c++
 #include <iostream>
 #include <queue>
 
@@ -22,7 +46,6 @@ struct a {
     int end;
     int value;
 };
-
 struct comp{ //less 역할을 대신 해줌
     bool operator()(a t, a u){
         return t.value < u.value;
